@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Maple\FWD.h">
+      <Filter>Maple</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Game.h">
+      <Filter>Maple</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\GamerSavedata.h">
+      <Filter>Maple</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\GamerSettings.h">
+      <Filter>Maple</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Lua.h">
+      <Filter>Maple</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Version.h">
+      <Filter>Maple</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\PatternManager\PatternManager.h">
+      <Filter>Maple\PatternManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Gameplay\GenericEventArgs.h">
+      <Filter>Maple\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Gameplay\MapleGameLogic.h">
+      <Filter>Maple\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Gameplay\UIGameLogic.h">
+      <Filter>Maple\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Maple\Gameplay\UIPuzzleSelect.h">
+      <Filter>Maple\Gameplay</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Maple\Game.cpp">
+      <Filter>Maple</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\GamerSavedata.cpp">
+      <Filter>Maple</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\GamerSettings.cpp">
+      <Filter>Maple</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\Lua.cpp">
+      <Filter>Maple</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\Version.cpp">
+      <Filter>Maple</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\PatternManager\PatternManager.cpp">
+      <Filter>Maple\PatternManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\Gameplay\MapleGameLogic.cpp">
+      <Filter>Maple\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\Gameplay\UIGameLogic.cpp">
+      <Filter>Maple\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Maple\Gameplay\UIPuzzleSelect.cpp">
+      <Filter>Maple\Gameplay</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Maple\GamerSavedata.inl">
+      <Filter>Maple</Filter>
+    </None>
+    <None Include="Maple\GamerSettings.inl">
+      <Filter>Maple</Filter>
+    </None>
+    <None Include="Maple\Lua.inl">
+      <Filter>Maple</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Maple">
+      <UniqueIdentifier>{328faaed-33dd-4af2-833a-760febf6fc34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Maple\Gameplay">
+      <UniqueIdentifier>{4992dc19-7172-4319-bf8e-55b2afe882a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Maple\PatternManager">
+      <UniqueIdentifier>{210afe47-e54c-4c88-a204-17ac5afbc40f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

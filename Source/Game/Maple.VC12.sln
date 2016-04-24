@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Maple.VC12", "Maple.VC12.vcxproj", "{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}"
+	ProjectSection(ProjectDependencies) = postProject
+		{96CD7385-7B7D-4469-A86D-B19D660C595E} = {96CD7385-7B7D-4469-A86D-B19D660C595E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bibim", "..\..\..\Bibim\build\vs2013\Bibim.vcxproj", "{96CD7385-7B7D-4469-A86D-B19D660C595E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Android = Debug|Android
+		Debug|Win32 = Debug|Win32
+		Release|Android = Release|Android
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Debug|Android.ActiveCfg = Debug|Android
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Debug|Android.Build.0 = Debug|Android
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Debug|Android.Deploy.0 = Debug|Android
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Debug|Win32.Build.0 = Debug|Win32
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Release|Android.ActiveCfg = Release|Android
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Release|Android.Build.0 = Release|Android
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Release|Android.Deploy.0 = Release|Android
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Release|Win32.ActiveCfg = Release|Win32
+		{B77B0FD8-10B4-46F0-B18F-793D8F47CB05}.Release|Win32.Build.0 = Release|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Android.ActiveCfg = Debug|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Android.Build.0 = Debug|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Android.Deploy.0 = Debug|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Win32.Build.0 = Debug|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Android.ActiveCfg = Release|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Android.Build.0 = Release|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Android.Deploy.0 = Release|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Win32.ActiveCfg = Release|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

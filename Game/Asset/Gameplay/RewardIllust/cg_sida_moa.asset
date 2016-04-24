@@ -1,0 +1,13 @@
+
+{
+    "$id" : 1,
+    "$type" : "Bibim.Asset.Pipeline.GameAssetRecipe",
+    "Cook"  : {
+        "$id" : 2,
+        "$type" : "Bibim.Asset.Pipeline.Recipes.ReadRecipe",
+        "Input" : "ReadTexture.recipe"
+    },
+    "Author" : "",
+    "Comment" : "",
+    "CanHotload" : false
+}

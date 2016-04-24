@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Maple.VC10", "Maple.VC10.vcxproj", "{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{96CD7385-7B7D-4469-A86D-B19D660C595E} = {96CD7385-7B7D-4469-A86D-B19D660C595E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bibim", "..\..\..\bibim\build\vs2010\Bibim.vcxproj", "{96CD7385-7B7D-4469-A86D-B19D660C595E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Android = Debug|Android
+		Debug|Win32 = Debug|Win32
+		Release|Android = Release|Android
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}.Debug|Android.ActiveCfg = Debug|Android
+		{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}.Debug|Win32.Build.0 = Debug|Win32
+		{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}.Release|Android.ActiveCfg = Release|Android
+		{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}.Release|Win32.ActiveCfg = Release|Win32
+		{22991D70-F0E9-48E6-A3A4-EFA78A560FBB}.Release|Win32.Build.0 = Release|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Android.ActiveCfg = Debug|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Android.Build.0 = Debug|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Android.Deploy.0 = Debug|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Debug|Win32.Build.0 = Debug|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Android.ActiveCfg = Release|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Android.Build.0 = Release|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Android.Deploy.0 = Release|Android
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Win32.ActiveCfg = Release|Win32
+		{96CD7385-7B7D-4469-A86D-B19D660C595E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
