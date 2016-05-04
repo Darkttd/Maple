@@ -48,17 +48,17 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\Bibim\lib\vs2015\Win32\Debug\Bibim.props" />
+    <Import Project="$(BIBIM_DIR)lib\vs2015\Win32\Debug\Bibim.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\Bibim\lib\vs2015\Win32\Release\Bibim.props" />
+    <Import Project="$(BIBIM_DIR)Bibim\lib\vs2015\Win32\Release\Bibim.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
-    <Import Project="..\..\..\Bibim\lib\vs2015\Android\Debug\Bibim.props" />
+    <Import Project="$(BIBIM_DIR)Bibim\lib\vs2015\Android\Debug\Bibim.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
-    <Import Project="..\..\..\Bibim\lib\vs2015\Android\Release\Bibim.props" />
+    <Import Project="$(BIBIM_DIR)Bibim\lib\vs2015\Android\Release\Bibim.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
