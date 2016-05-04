@@ -1,2 +1,16 @@
 Game/keystore
 Design/
+Game/Asset/*.ab
+Game/Asset/Script/*.ab
+Game/Asset/Shader/*.ab
+Game/Asset/UI/*.ab
+Game/Asset/UI/gen
+Game/Maple.VC14.Debug.exe
+Game/Maple.VC14.Debug.ilk
+Game/Maple.VC14.Debug.pdb
+Game/Maple.VC14.iobj
+Game/Maple.VC14.ipdb
+Source/Game/(Build)
+*.suo
+*.opendb
+Source/Game/Maple.VC14.VC.db
