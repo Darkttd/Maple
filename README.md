@@ -1,7 +1,7 @@
 # Maple
 Maple is project name of game "Moemoe Nemologic" which is square picross game.
 
-# Download
+## Download Game
 - https://play.google.com/store/apps/details?id=com.Kradmoa.Maple
 - https://itunes.apple.com/us/app/mo-emo-e-nemolojig/id953832099?mt=8
 
