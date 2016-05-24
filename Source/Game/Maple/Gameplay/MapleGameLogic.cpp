@@ -46,7 +46,7 @@ namespace Maple
 
     void MapleGameLogic::Update(float /*dt*/, int /*timestamp*/)
     {
-        // <TODO> 시간 측정 로직이 들어갈 경우 사용할 것
+        // Use this code when need to use time measure
     }
 
     const MapleGameLogic::GamePanel& MapleGameLogic::GetSolvePanel() const
@@ -68,21 +68,21 @@ namespace Maple
     {
         BBAssert(cursor.X == cursorTail.X || cursor.Y == cursorTail.Y);
 
-        // dic은 cursorTail에서 cursor을 향하는 방향
+        // 'dic' is direction from 'cursorTail' to 'cursor'
         Point2 dic = cursor - cursorTail;
 
         TryFillColorResult::T result = TryFillColorResult::NonChanged;
 
         if(dic == Point2::Zero)
         {
-            // 한 칸만 선택된 상태에서 O 버튼을 누를 경우,
-            // 대상에 X 표식이 있을 경우에도 지우는 식으로 동작합니다.
+            // Clicked 'O' button when Single cell selected,
+            // remove 'X' marker at selected cell.
 
             if(solvePattern.arr[cursor.X][cursor.Y] == TableState::Uncolored)
             {
                 if(ansPattern.arr[cursor.X][cursor.Y] == TableState::Uncolored)
                 {
-                    // 정답이 아닌 경우, 오답으로 표기합니다
+                    // If not correct, check wrong anser
 
                     solvePattern.arr[cursor.X][cursor.Y] = TableState::ForceErased;
 
@@ -91,7 +91,7 @@ namespace Maple
                 }
                 else
                 {
-                    // 정답인 경우 색칠합니다.
+                    // Only fill colored when correct
 
                     solvePattern.arr[cursor.X][cursor.Y] = TableState::Colored;
                     result = TryFillColorResult::Correct;
@@ -99,7 +99,7 @@ namespace Maple
             }
             else if(solvePattern.arr[cursor.X][cursor.Y] == TableState::Erased)
             {
-                // X 표가 되어있는 경우, X 표식을 지웁니다.
+                // remove 'X' marker when it filled 'X'
 
                 solvePattern.arr[cursor.X][cursor.Y] = TableState::Uncolored;
 
@@ -119,11 +119,11 @@ namespace Maple
             {
                 if(solvePattern.arr[currentPoint.X][currentPoint.Y] == TableState::Uncolored)
                 {
-                    // 대상에 아무 표식이 없을 때만 작동합니다
+                    // Only works when 'Uncolored'
 
                     if(ansPattern.arr[currentPoint.X][currentPoint.Y] == TableState::Uncolored)
                     {
-                        // 정답이 아닌 경우, 오답으로 표기하고 색칠을 중단합니다
+                        // If not correct, check wrong anser and stop filling
 
                         solvePattern.arr[currentPoint.X][currentPoint.Y] = TableState::ForceErased;
 
@@ -133,7 +133,7 @@ namespace Maple
                     }
                     else
                     {
-                        // 정답인 경우 색칠합니다.
+                        // Only fill colored when correct.
 
                         solvePattern.arr[currentPoint.X][currentPoint.Y] = TableState::Colored;
                     }

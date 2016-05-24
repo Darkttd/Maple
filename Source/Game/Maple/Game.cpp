@@ -103,8 +103,8 @@ namespace Maple
 		lua->Load("Asset/Script/PuzzleSelect");
         lua->Load("Asset/Script/dump");
 
-        // <TODO> ReloadScript() 에서는, 스크립트 관련 코드만 들어가야 합니다.
-        // 추후 구조 개선을 시작한다면, 이 코드를 다른 곳으로 빼던지 해야 합니다.
+        // <TODO> ReloadScript() has only code which related with scripting.
+        // It needs to refacctoring next code.
         PatternManager* patternManager = new PatternManager();
         GetModules()->GetRoot()->AttachChild(patternManager);
         patternManager->Init(GetLua());

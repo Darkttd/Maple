@@ -113,7 +113,7 @@ namespace Maple
         #ifdef BIBIM_PLATFORM_IOS
         lua_tinker::set(L, "PLATFORM", "IOS");
         #else
-        // PC platform 은 타깃이 아니므로, 안드로이드로 간주합니다.
+        // PC platform is not target. then, it decide to android.
         lua_tinker::set(L, "PLATFORM", "ANDROID");
         #endif
 
