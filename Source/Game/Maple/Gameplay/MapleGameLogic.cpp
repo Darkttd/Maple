@@ -159,7 +159,7 @@ namespace Maple
     {
         BBAssert(cursor.X == cursorTail.X || cursor.Y == cursorTail.Y);
 
-        // dic은 cursorTail에서 cursor을 향하는 방향
+        // 'dic' is direction from 'cursorTail' to 'cursor'
         Point2 dic = cursor - cursorTail;
 
         if(dic.X != 0)
@@ -173,7 +173,7 @@ namespace Maple
 
         if(solvePattern.arr[cursorTail.X][cursorTail.Y] == TableState::Erased || solvePattern.arr[cursorTail.X][cursorTail.Y] == TableState::ForceErased)
         {
-            // 시작점이 X 일 경우, X 를 지우는 형식으로 동작합니다.
+            // If start point is marked 'X', operation will remove 'X'
 
             eraseMode = false;
         }
@@ -182,12 +182,12 @@ namespace Maple
         {
             if(eraseMode && solvePattern.arr[currentPoint.X][currentPoint.Y] == TableState::Uncolored)
             {
-                // 시작점이 X가 아니고, 아무 것도 없는 칸인 경우, X 표를 합니다.
+                // If start point is not 'X', and this is null block, then fill 'X'
                 solvePattern.arr[currentPoint.X][currentPoint.Y] = TableState::Erased;
             }
             else if(!eraseMode && solvePattern.arr[currentPoint.X][currentPoint.Y] == TableState::Erased)
             {
-                // 시작점이 X이고, X가 칠해져 있는 칸이면, X를 지웁니다.
+                // If start point is 'X', and this is 'X' block, then remove 'X'
                 solvePattern.arr[currentPoint.X][currentPoint.Y] = TableState::Uncolored;
             }
         }
@@ -199,7 +199,7 @@ namespace Maple
     {
         std::vector<std::vector<int> > pattern;
 
-        // <TODO> Draw() 함수의 수행시간을 줄여야 한다면, pattern 을 한번만 계산하도록 변경해야 합니다.
+        // <TODO> If need to reduce 'Draw()' call speed, reduce calculate 'pattern' only first time.
 
         for(int i = 0; i < puzzleSize; i++)
         {
@@ -240,7 +240,7 @@ namespace Maple
     {
         std::vector<std::vector<int> > pattern;
 
-        // <TODO> Draw() 함수의 수행시간을 줄여야 한다면, pattern 을 한번만 계산하도록 변경해야 합니다.
+        // <TODO> If need to reduce 'Draw()' call speed, reduce calculate 'pattern' only first time.
 
         for(int i = 0; i < puzzleSize; i++)
         {
@@ -313,8 +313,7 @@ namespace Maple
 
     bool MapleGameLogic::WinCheck()
     {
-        // 이겼는지 체크하는 로직입니다.
-        // 체크된 칸이 모두 일치하면 통과입니다.
+        // Check for Win Game.
 
         bool result = true;
 
@@ -338,9 +337,7 @@ namespace Maple
 
     void MapleGameLogic::Incorrect()
     {
-        // 라이프만 깍습니다.
-
-        // 남은 라이프는 UIGameLogic 쪽에서 꺼내서 사용합니다.
+        // Just reduce life.
 
         restLife--;
     }
