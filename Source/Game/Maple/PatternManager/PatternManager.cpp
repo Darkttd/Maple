@@ -68,30 +68,9 @@ namespace Maple
 		return (puzzleInformationCollection.size() + puzzlePerPage - 1) / puzzlePerPage;
 	}
 
-	//std::vector<PatternManager::PuzzlePattern> PatternManager::GetPuzzlePatternOnPage( int character, int page ) const
-	//{
-	//	std::vector<PuzzlePattern> puzzlePattern;
-
-	//	// <TODO> character 에 따라 분류하는 로직을 추가해야 합니다.
-
-	//	int offset = page * puzzlePerPage;
-
-	//	for(int i = 0; i < puzzlePerPage; i++)
-	//	{
-	//		if(offset + i >= static_cast<int>(puzzleInformationCollection.size()))
-	//			break;
-
-	//		puzzlePattern.push_back(puzzleInformationCollection[i].puzzlePattern);
-	//	}
-
-	//	return puzzlePattern;
-	//}
-
 	PatternManager::PuzzleInformationCollection PatternManager::GetPuzzleInformationOnPage( int character, int page ) const
 	{
 		PuzzleInformationCollection puzzleInformation;
-
-		// <TODO> character 에 따라 분류하는 로직을 추가해야 합니다.
 
 		int offset = page * puzzlePerPage;
 
@@ -108,8 +87,6 @@ namespace Maple
 
     const PatternManager::PuzzleInformation& PatternManager::GetPuzzleInformationOnNumber(int character, int index) const
     {
-		// <TODO> character 에 따라 분류하는 로직을 추가해야 합니다.
-
         BBAssert(index < puzzleInformationCollection.size());
 
 		return puzzleInformationCollection[index];
@@ -131,7 +108,7 @@ namespace Maple
 
     void PatternManager::Init(StandardGame::LuaBase* lua)
     {
-        // 이미 로드된 lua 로부터 수동으로 데이터를 읽어오도록 합니다.
+        // Manually load data from loaded lua
 
         lua_State* state = lua->GetState();
 

@@ -10,7 +10,7 @@ namespace Maple
 {
 	class PatternManager : public Bibim::GameModule
 	{
-		// 여러 패턴의 퍼즐들을 관리하는 클래스
+		// Manager of Patterns
         BBThisIsNoncopyableClass(PatternManager);
         BBModuleClass(PatternManager, GameModule, 'P', 'T', 'M', 'G');
 
@@ -31,7 +31,7 @@ namespace Maple
                     int index;
                     int puzzleSize;
                     PuzzlePattern puzzlePattern;
-                    int targetCharacter; // 0 = 모아, 1 = 단풍
+                    int targetCharacter; // 0 = Moa, 1 = Maple
                     bool isSolved;
                     bool isUnlocked;
 			};
@@ -48,8 +48,8 @@ namespace Maple
 			int GetTotalPuzzelCount() const;
 			int GetTotalPageCount() const;
 
-			//std::vector<PuzzlePattern> GetPuzzlePatternOnPage(int character, int page) const; // page 는 0부터 시작합니다.
-			PuzzleInformationCollection GetPuzzleInformationOnPage(int character, int page) const; // page 는 0부터 시작합니다.
+			//std::vector<PuzzlePattern> GetPuzzlePatternOnPage(int character, int page) const; // page starts 0
+			PuzzleInformationCollection GetPuzzleInformationOnPage(int character, int page) const; // page starts 0
             const PuzzleInformation& GetPuzzleInformationOnNumber(int character, int index) const;
 
 			void SetSpecificPuzzleSolved(int index, bool solved);

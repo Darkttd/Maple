@@ -85,7 +85,7 @@ namespace Maple
     {
         {
             currentPatternNumber = patternNumber;
-            const PatternManager::PuzzleInformation& puzzleInfo = patternManager->GetPuzzleInformationOnNumber(0, patternNumber); // <TODO> 첫번째 인수로 캐릭터 정보를 넘겨주도록 수정해야 합니다.
+            const PatternManager::PuzzleInformation& puzzleInfo = patternManager->GetPuzzleInformationOnNumber(0, patternNumber);
 
             int puzzleSize = puzzleInfo.puzzleSize;
             MapleGameLogic::GamePanel ansPattern;
@@ -229,7 +229,7 @@ namespace Maple
 
     void UIGameLogic::UpdateSelectedRowLayer()
     {
-        // <TODO> 추후에 스크립트로 빠져야 하는 구문입니다.
+        // <TODO> This function will be rewrite on Script
 
         UIVisual* gamePanel = uiLayer->FindChild("GamePanel", false);
 
@@ -246,7 +246,7 @@ namespace Maple
                 Point2 cursor = mapleGameLogic->GetCursor();
                 Point2 cursorTail = mapleGameLogic->GetCursorTail();
 
-                // 일단 모두 끕니다.
+                // Off all
 
                 UIVisual* verticalVisual = StaticCast<UIPanel>(targetPanel)->FindChild("Vertical", false);
                 UIVisual* horizontalVisual = StaticCast<UIPanel>(targetPanel)->FindChild("Horizontal", false);
@@ -279,9 +279,9 @@ namespace Maple
                 {
                     BBAssert(cursor.X == cursorTail.X || cursor.Y == cursorTail.Y);
 
-                    // <TODO> DrawClickedPattern 와 중복코드입니다. 코드 개선이 필요하다면, 코드 중복을 해제해야 합니다.
+                    // <TODO> Duplicate with DrawClickedPattern.
 
-                    // dic은 cursor에서 cursorTail을 향하는 방향
+                    // dic is direction which from cursor to cursorTail
                     Point2 dic = cursorTail - cursor;
 
                     if(dic.X != 0)
@@ -374,17 +374,15 @@ namespace Maple
 
     Point2 UIGameLogic::GetAxisAlignedMousePosition(Point2 startPoint, Point2 currentPoint) const
     {
-        // currentPoint에서부터 "startPoint에서 x, y 축으로 뻗은 축" 위에 제일 가까운 점을 찾아서 리턴합니다.
-
         if(Math::Abs(startPoint.X - currentPoint.X) > Math::Abs(startPoint.Y - currentPoint.Y))
         {
-            // x 의 차이가 더 크면, currentPoint의 x 를 사용합니다
+            // if diff of x is larger, use currentPoint's x
 
             return Point2(currentPoint.X, startPoint.Y);
         }
         else
         {
-            // 그렇지 않다면, currentPoint의 y를 사용합니다
+            // if not, use currentPoint's y
 
             return Point2(startPoint.X, currentPoint.Y);
         }
@@ -453,7 +451,7 @@ namespace Maple
 
             switch(result)
             {
-                // Lua 로 이벤트를 던집니다.
+                // send event to Lua
 
                 case MapleGameLogic::TryFillColorResult::GameOver:
                     appEventDispatcher->RaiseEvent(UIEventID("GameOver"), Args(this));
@@ -514,14 +512,12 @@ namespace Maple
 
         if(isGameAreaClicking && mapleGameLogic)
         {
-            // 현재 마우스 포인터의 게임 영역 안/밖과 상관 없이, 게임 영역 안에서 클릭이 시작되었다면 계속하여 이쪽으로 진입됩니다.
+            // If mouse click start from This Game, This event will be called until unclick even if mouse pointer is out of window.
             const Point2 gridPos = GetPickedGridPosition(GetAxisAlignedMousePosition(clickStartPosition, targetMousePos));
 
             mapleGameLogic->SetCursor(gridPos);
             UpdateCursorLayer(gridPos);
             UpdateSelectedRowLayer();
-
-            // <TODO> 드래그 중이므로, 현재 커서가 시작 커서와 반드시 직선 위치에만 올 수 있도록 수정해야 합니다
         }
 
         return Base::OnMouseMove(args);
@@ -529,8 +525,6 @@ namespace Maple
 
     bool UIGameLogic::OnMouseButtonDown(const Bibim::UIMouseButtonEventArgs& args)
     {
-        // <TODO> 게임 영역 밖일 경우 아래 로직을 실행하지 않고, 또한 기본 Base::OnMouseButtonDown(); 를 호출하도록 변경해야 합니다
-
         //const Point2 targetMousePos = Point2(args.GetPositionX() / contextScale.X - contextOffset.X,
         //args.GetPositionY() / contextScale.Y - contextOffset.Y);
         const Vector3 translatedMousePos = contextMatrixInv.Transform(Vector3(args.GetPositionX(), args.GetPositionY(), 0));
@@ -565,7 +559,7 @@ namespace Maple
         {
             if(isGameAreaClicking && args.GetButtonCode() == Key::MouseLeftButton)
             {
-                // 현재 마우스 포인터의 게임 영역 안/밖과 상관 없이, 게임 영역 안에서 클릭이 시작되었고, 지금 이벤트가 좌클릭일 경우에만 이쪽으로 진입됩니다.
+                // The case which Left Button is Clicking
 
                 const Point2 position = GetPickedGridPosition(GetAxisAlignedMousePosition(clickStartPosition, targetMousePos));
                 UpdateCursorLayer(position);
@@ -601,30 +595,30 @@ namespace Maple
 			{
 			case 5:
 				defaultOffset = Vector2(-35.0f, 24.0f);
-				xSideOffset = Vector2(-20.0f, 0.0f); // 글자사이의 간격
+				xSideOffset = Vector2(-20.0f, 0.0f); // Distance between characters
 				ySideOffset = Vector2(0.0f, 74.0f);
                 centerOffset = Vector2(0.0f, 0.0f);
 				break;
 
 			case 10:
 				defaultOffset = Vector2(-27.0f, 9.0f);
-				xSideOffset = Vector2(-16.0f, 0.0f); // 글자사이의 간격
+				xSideOffset = Vector2(-16.0f, 0.0f); // Distance between characters
 				ySideOffset = Vector2(0.0f, 37.0f);
-                centerOffset = Vector2(-10.0f, 0.0f); // 10 이상의 숫자일 경우 보정
+                centerOffset = Vector2(-10.0f, 0.0f); // offset for above 10
 				break;
 
 			case 15:
 				defaultOffset = Vector2(-17.0f, 11.0f);
-				xSideOffset = Vector2(-12.0f, 0.0f); // 글자사이의 간격
+				xSideOffset = Vector2(-12.0f, 0.0f); // Distance between characters
 				ySideOffset = Vector2(0.0f, 24.58f);
-                centerOffset = Vector2(-7.0f, 0.0f); // 10 이상의 숫자일 경우 보정
+                centerOffset = Vector2(-7.0f, 0.0f); // offset for above 10
 				break;
 
 			case 20:
 				defaultOffset = Vector2(-18.0f, 8.0f);
-				xSideOffset = Vector2(-10.0f, 0.0f); // 글자사이의 간격
+				xSideOffset = Vector2(-10.0f, 0.0f); // Distance between characters
 				ySideOffset = Vector2(0.0f, 18.5f);
-                centerOffset = Vector2(-8.0f, 0.0f); // 10 이상의 숫자일 경우 보정
+                centerOffset = Vector2(-8.0f, 0.0f); // offset for above 10
 				break;
 			}
 
@@ -673,29 +667,29 @@ namespace Maple
 			case 5:
 				defaultOffset = Vector2(29.0f, -35.0f);
 				xSideOffset = Vector2(74.0f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -30.0f); // 글자사이의 간격
+				ySideOffset = Vector2(0.0f, -30.0f); // Distance between characters
                 centerOffset = Vector2(0.0f, 0.0f);
 				break;
 
 			case 10:
 				defaultOffset = Vector2(12.0f, -30.0f);
 				xSideOffset = Vector2(37.0f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -20.0f); // 글자사이의 간격
-                centerOffset = Vector2(-6.0f, 0.0f); // 10 이상의 숫자일 경우 보정
+				ySideOffset = Vector2(0.0f, -20.0f); // Distance between characters
+                centerOffset = Vector2(-6.0f, 0.0f); // offset for above 10
 				break;
 
 			case 15:
 				defaultOffset = Vector2(10.0f, -14.0f);
 				xSideOffset = Vector2(24.6f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -14.0f); // 글자사이의 간격
-                centerOffset = Vector2(0.0f, 0.0f); // 10 이상의 숫자일 경우 보정
+				ySideOffset = Vector2(0.0f, -14.0f); // Distance between characters
+                centerOffset = Vector2(0.0f, 0.0f); // offset for above 10
 				break;
 
 			case 20:
 				defaultOffset = Vector2(7.0f, -14.0f);
 				xSideOffset = Vector2(18.48f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -10.0f); // 글자사이의 간격
-                centerOffset = Vector2(0.0f, 0.0f); // 10 이상의 숫자일 경우 보정
+				ySideOffset = Vector2(0.0f, -10.0f); // Distance between characters
+                centerOffset = Vector2(0.0f, 0.0f); // offset for above 10
 				break;
 			}
 
