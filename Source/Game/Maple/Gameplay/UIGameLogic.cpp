@@ -795,11 +795,9 @@ namespace Maple
 
     void UIGameLogic::DrawClickedPattern(Bibim::UIDrawingContext& context)
     {
-        // 선택된 영역을 파랗게 칠하는 부분입니다.
+        // Draw filled blue square where selected area
 
-        // 커서 자체는 cursorLayer 에서 출력합니다.
-
-        // 통합해야 하지만, 급하게 작성하는 관계로 그냥 여기에 작성합니다.
+        // Cursor is printed cursorLayer.
 
         if(mapleGameLogic)
         {
@@ -808,13 +806,13 @@ namespace Maple
 
             if(cursor != cursorTail)
             {
-                // 커서와 커서꼬리의 위치가 다를 때에만 파란색으로 칠합니다 //
+                // Only draw blue when cursor and cursorTail are not same position //
                 const float x = zeroPointOffset.X + context.GetOffsetX();
                 const float y = zeroPointOffset.Y + context.GetOffsetY();
 
                 BBAssert(cursor.X == cursorTail.X || cursor.Y == cursorTail.Y);
 
-                // dic은 cursor에서 cursorTail을 향하는 방향
+                // dic is direction where from cursor to cursorTail
                 Point2 dic = cursorTail - cursor;
 
                 if(dic.X != 0)

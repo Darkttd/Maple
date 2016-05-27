@@ -115,7 +115,7 @@ namespace Maple
     {
         PatternManager::PuzzleInformationCollection puzzles;
 
-        puzzles = patternManager->GetPuzzleInformationOnPage(0, currentPage); // <TODO> 첫번째 인수로 캐릭터 정보를 넘겨주도록 수정해야 합니다
+        puzzles = patternManager->GetPuzzleInformationOnPage(0, currentPage);
 
         UIWindowPtr puzzleSelectWindow;
 

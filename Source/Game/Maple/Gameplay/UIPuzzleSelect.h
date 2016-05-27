@@ -13,7 +13,7 @@ namespace Maple
 {
 	class UIPuzzleSelect : public Bibim::UIPanel
 	{
-		// "퍼즐선택로직" 의 UI 를 정의합니다.
+		// Define UI of "Puzzle Select Scene"
 
 		BBComponentClass(UIPuzzleSelect, Bibim::UIPanel, 'u', 'i', 'p', 'z');
 		public:

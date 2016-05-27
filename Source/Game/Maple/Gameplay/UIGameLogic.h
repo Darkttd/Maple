@@ -13,7 +13,7 @@ namespace Maple
 {
     class UIGameLogic : public Bibim::UIPanel, public Bibim::IUpdateable
     {
-        // "네모로직" 의 UI 를 정의합니다.
+        // Define UI of "SquareLogic"
 
         BBComponentClass(UIGameLogic, Bibim::UIPanel, 'u', 'i', 'g', 'l');
         public:
@@ -124,7 +124,7 @@ namespace Maple
             bool isUnlockUIShowing;
             bool isGameOverUIShowing;
             int currentPatternNumber;
-            Bibim::Point2 clickStartPosition; // 본래라면 따로 서버클래스하여 작성해야 하지만, 현재는 간단하게 직접 사용함; 드래그 정밀하게 하기 위한 용도
+            Bibim::Point2 clickStartPosition;
             float blockPixelSize;
             float interBlockOffset;
     };
