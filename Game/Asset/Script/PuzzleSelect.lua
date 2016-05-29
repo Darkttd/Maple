@@ -93,7 +93,7 @@ function goToPuzzleSelect()
 
     th.resetloadingstatus();
 
-    character = 'Moa'; -- <TODO> setting 으로부터 불러오도록 수정해야 합니다.
+    character = 'Moa'; -- <TODO> To load from setting.
 
     --local session = GamingSession():Reset(3)
     --                                :SetCharacter(character)
@@ -103,7 +103,7 @@ function goToPuzzleSelect()
     local world = ui.createpuzzleselect(nil, true):SetName('World');
 
     setupLoadingScreen(root);
-    playMusic(1); -- 퍼즐선택창에서는 항상 로비음악입니다.
+    playMusic(1); -- In puzzle Select UI, always Lobby musix.
 
     do
         local layout = th.load('Asset/UI/PuzzleSelectUI');
@@ -132,7 +132,7 @@ function goToPuzzleSelect()
         world:SetPatternPixel(68.0);
 
         do
-            -- 퍼즐을 세팅합니다.
+            -- Setting Puzzle
             local puzzleManager = th.patternman();
 
             world:SetPatternManager(puzzleManager);
@@ -209,7 +209,7 @@ function goToPuzzleSelect()
 
             local function goPuzzle(puzzleNumber)
                 return function(target)
-                    local pageNumber = 0; -- 페이지넘버 추가해야 합니다.
+                    local pageNumber = 0; -- Add page number.
 
                     local f = go(goToGame, pageNumber, puzzleNumber);
                     f(target);

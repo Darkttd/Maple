@@ -32,7 +32,7 @@ function showStanding(uiName, xpos, ypos, w, zorder, targetChar, targetCloth)
             settings:SetStandingCharacter('Kradmoa');
         end
 
-        -- 단풍일 경우 강제로 픽셀을 재조정합니다
+        -- If character is Maple, reposition position
         if(settings:GetStandingCharacter() == 'Maple') then
             xpos = xpos + 10;
         end
@@ -63,7 +63,7 @@ function showStanding(uiName, xpos, ypos, w, zorder, targetChar, targetCloth)
     if(targetChar == 'Maple') then
         targetCloth = targetCloth or settings:GetMapleStandingCharacterCloth();
 
-        -- 단풍이는 차이나드레스에서 꽁지머리 그리지 않음
+        -- Do not draw Maple's tied hair when ChinaDress
         if(targetCloth ~= 'ChinaDress') then
             ui(maple, 'Basic'):Show();
         else
@@ -72,7 +72,7 @@ function showStanding(uiName, xpos, ypos, w, zorder, targetChar, targetCloth)
     else
         targetCloth = targetCloth or settings:GetMoaStandingCharacterCloth();
 
-        -- 모아는 수영복에서 꽁지머리 그리지 않음
+        -- Do not draw Moa's tied hair when SwimSuits
         if(targetCloth ~= 'SwimSuits') then
             ui(maple, 'Basic'):Show();
         else

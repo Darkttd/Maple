@@ -77,8 +77,8 @@ function goToGame(pageNumber, puzzleNumber)
         world:SetUILayer(window);
 
         do
-            -- <TODO> 임시 코드입니다. Session 개념이 들어간다면,
-            -- 퍼즐 사이즈는 그쪽으로부터 불러와야 합니다.
+            -- <TODO> This is temporary code. If add Session System,
+            -- Puzzle size will be loaded from it.
 
             puzzleSize = world:GetPuzzleSize();
         end
@@ -188,8 +188,8 @@ function goToGame(pageNumber, puzzleNumber)
         ui(window, 'PauseMenuPanel'):SetZOrder(135);
         ui(window, 'GameOverPanel'):SetZOrder(135);
 
-        --업밸류로 접근하지 말고, 람다 안에서는 ui() 함수로 접근해서 처리할 것
-        --다시말해, 람다에서는 window 변수 쓰지 말것
+        -- Do not access from upvalue, in lambda function, access by ui() function
+        -- This says do not variable 'window' in lambda function
         ui.on(ui(window, 'ControlPanel'), 'click', controlPanel);
         ui.on(ui(window, 'PauseButton'), 'click', Gameplay.showPauseMenu);
         ui.on(ui(window, 'OButton'), 'click', tryFillColor);
@@ -206,8 +206,8 @@ function goToGame(pageNumber, puzzleNumber)
         ui.effectorize(ui(window, 'OButton'));
         ui.effectorize(ui(window, 'XButton'));
 
-        --PauseMenuPanel 을 world의 자식으로 등록하면서, ingameUI의 자식에서 해제되므로,
-        --위의 이벤트 등록이 끝난 뒤에 배치합니다.
+        -- When PauseMenuPanel regist world's child, it unregist from ingameUI's child',
+        -- Then place it after above event regist.
         world:SetPauseUILayer(ui(window, 'PauseMenuPanel'));
         world:SetGameOverUILayer(ui(window, 'GameOverPanel'));
     end
@@ -300,7 +300,7 @@ function goToGame(pageNumber, puzzleNumber)
     end
 
     do
-        -- n x n 의 퍼즐 UI 만 남기고 모두 Visible 을 끄는 로직입니다.
+        -- Visible off of all of item but puzzle UI.
 
         local gamePanel = ui(world, 'ingameUI');
         gamePanel = ui(gamePanel, 'GamePanel');
@@ -339,7 +339,7 @@ function goToGame(pageNumber, puzzleNumber)
         ui.on(world, 'keydown', function(v, key)
 
             -- if(key == 'D1') then
-            --     -- <TODO> 디버그 코드입니다. 완성되면 지워야 합니다.
+            --     -- <TODO> Debug Code. Delete after comlete.
             --     _ALERT('cheat_clear');
             --     Gameplay.showClearUI();
             -- end
@@ -354,8 +354,8 @@ function goToGame(pageNumber, puzzleNumber)
 
     --[[
     do
-        -- 현재 코드쪽에서 켜고꺼주고 있으므로 여기에서는 작동하지 않습니다.
-        -- 코드쪽의 켜고끄는 코드를 스크립트로 뺄 예정이라면, 이 코드의 주석이 해제되어야 합니다.
+        -- currently it runs on Native code.
+        -- If this code move to script, this comment need to uncomment.
         local current = ui(world, 'ingameUI');
         current = ui(current, 'GamePanel');
         current = ui(current, 'Panel55');
