@@ -31,80 +31,80 @@ namespace Maple
 
     ///////////////////////////////////////////////////////////////////////
 
-	PatternManager::PatternManager()
-		: puzzlePerPage(12)
+    PatternManager::PatternManager()
+        : puzzlePerPage(12)
           , isInit(false)
-	{
-	}
+    {
+    }
 
-	PatternManager::~PatternManager()
-	{
-	}
+    PatternManager::~PatternManager()
+    {
+    }
 
-	void PatternManager::AddPuzzleInformation( const PuzzleInformation& value )
-	{
-		puzzleInformationCollection.push_back(value);
-	}
+    void PatternManager::AddPuzzleInformation( const PuzzleInformation& value )
+    {
+        puzzleInformationCollection.push_back(value);
+    }
 
-	int PatternManager::GetPuzzlePerPage() const
-	{
-		return puzzlePerPage;
-	}
+    int PatternManager::GetPuzzlePerPage() const
+    {
+        return puzzlePerPage;
+    }
 
-	void PatternManager::SetPuzzlePerPage( int value )
-	{
-		puzzlePerPage = value;
-	}
+    void PatternManager::SetPuzzlePerPage( int value )
+    {
+        puzzlePerPage = value;
+    }
 
-	int PatternManager::GetTotalPuzzelCount() const
-	{
-		return puzzleInformationCollection.size();
-	}
+    int PatternManager::GetTotalPuzzelCount() const
+    {
+        return puzzleInformationCollection.size();
+    }
 
-	int PatternManager::GetTotalPageCount() const
-	{
-		BBAssert(puzzlePerPage > 0);
+    int PatternManager::GetTotalPageCount() const
+    {
+        BBAssert(puzzlePerPage > 0);
 
-		return (puzzleInformationCollection.size() + puzzlePerPage - 1) / puzzlePerPage;
-	}
+        return (puzzleInformationCollection.size() + puzzlePerPage - 1) / puzzlePerPage;
+    }
 
-	PatternManager::PuzzleInformationCollection PatternManager::GetPuzzleInformationOnPage( int character, int page ) const
-	{
-		PuzzleInformationCollection puzzleInformation;
+    PatternManager::PuzzleInformationCollection PatternManager::GetPuzzleInformationOnPage( int character, int page ) const
+    {
+        PuzzleInformationCollection puzzleInformation;
 
-		int offset = page * puzzlePerPage;
+        int offset = page * puzzlePerPage;
 
-		for(int i = 0; i < puzzlePerPage; i++)
-		{
-			if(offset + i >= static_cast<int>(puzzleInformationCollection.size()))
-				break;
+        for(int i = 0; i < puzzlePerPage; i++)
+        {
+            if(offset + i >= static_cast<int>(puzzleInformationCollection.size()))
+                break;
 
-			puzzleInformation.push_back(puzzleInformationCollection[offset + i]);
-		}
+            puzzleInformation.push_back(puzzleInformationCollection[offset + i]);
+        }
 
-		return puzzleInformation;
-	}
+        return puzzleInformation;
+    }
 
     const PatternManager::PuzzleInformation& PatternManager::GetPuzzleInformationOnNumber(int character, int index) const
     {
         BBAssert(index < puzzleInformationCollection.size());
 
-		return puzzleInformationCollection[index];
+        return puzzleInformationCollection[index];
     }
 
-	void PatternManager::SetSpecificPuzzleSolved( int index, bool solved )
-	{
-		BBAssert(index < static_cast<int>(puzzleInformationCollection.size()));
+    void PatternManager::SetSpecificPuzzleSolved( int index, bool solved )
+    {
+        BBAssert(index < static_cast<int>(puzzleInformationCollection.size()));
 
-		puzzleInformationCollection[index].isSolved = solved;
-	}
+        puzzleInformationCollection[index].isSolved = solved;
+    }
 
-	void PatternManager::SetSpecificPuzzleUnlocked( int index, bool unlocked )
-	{
-		BBAssert(index < static_cast<int>(puzzleInformationCollection.size()));
+    void PatternManager::SetSpecificPuzzleUnlocked( int index, bool unlocked )
+    {
+        BBAssert(index < static_cast<int>(puzzleInformationCollection.size()));
 
-		puzzleInformationCollection[index].isUnlocked = unlocked;
-	}
+        puzzleInformationCollection[index].isUnlocked = unlocked;
+    }
 
     void PatternManager::Init(StandardGame::LuaBase* lua)
     {

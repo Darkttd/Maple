@@ -103,31 +103,31 @@ namespace Maple
 
         if (FontLibrary* fontLibrary = modules->FindModule<FontLibrary>())
         {
-			int tempPuzzleSize = mapleGameLogic->GetPuzzleSize();
+            int tempPuzzleSize = mapleGameLogic->GetPuzzleSize();
 
             font = new Font(fontLibrary);
             font->SetFace(EMBEDDED_FONT_DATA,
                           sizeof(EMBEDDED_FONT_DATA) / sizeof(EMBEDDED_FONT_DATA[0]));
             font->SetColor(Color::Black);
 
-			switch(tempPuzzleSize)
-			{
-			case 5:
-				font->SetSize(20.0f);
-				break;
+            switch(tempPuzzleSize)
+            {
+            case 5:
+                font->SetSize(20.0f);
+                break;
 
-			case 10:
-				font->SetSize(18.0f);
-				break;
+            case 10:
+                font->SetSize(18.0f);
+                break;
 
-			case 15:
-				font->SetSize(11.0f);
-				break;
+            case 15:
+                font->SetSize(11.0f);
+                break;
 
-			case 20:
-				font->SetSize(8.0f);
-				break;
-			}
+            case 20:
+                font->SetSize(8.0f);
+                break;
+            }
 
             //font->SetScale(30.0f);
             font->SetFaceURI("Asset/NanumGothic");
@@ -237,7 +237,7 @@ namespace Maple
         {
             int ps = mapleGameLogic->GetPuzzleSize();
 
-			String panelName = String::CFormat("Panel%d%d", ps, ps);
+            String panelName = String::CFormat("Panel%d%d", ps, ps);
 
             UIVisual* targetPanel = StaticCast<UIPanel>(gamePanel)->FindChild(panelName, false);
 
@@ -480,15 +480,15 @@ namespace Maple
         }
     }
 
-	int UIGameLogic::GetPuzzleSize() const
-	{
-		if(mapleGameLogic)
-		{
-			return mapleGameLogic->GetPuzzleSize();
-		}
-		
-		return -1;
-	}
+    int UIGameLogic::GetPuzzleSize() const
+    {
+        if(mapleGameLogic)
+        {
+            return mapleGameLogic->GetPuzzleSize();
+        }
+        
+        return -1;
+    }
 
     int UIGameLogic::GetPatternNumber() const
     {
@@ -583,44 +583,44 @@ namespace Maple
         vector<vector<int> > horizontal = mapleGameLogic->GetHorizontalNumberCount();
         vector<vector<int> > vertical = mapleGameLogic->GetVerticalNumberCount();
 
-		int ps = mapleGameLogic->GetPuzzleSize();
+        int ps = mapleGameLogic->GetPuzzleSize();
 
         {
-			Vector2 defaultOffset;
-			Vector2 xSideOffset;
-			Vector2 ySideOffset;
+            Vector2 defaultOffset;
+            Vector2 xSideOffset;
+            Vector2 ySideOffset;
             Vector2 centerOffset;
 
-			switch(ps)
-			{
-			case 5:
-				defaultOffset = Vector2(-35.0f, 24.0f);
-				xSideOffset = Vector2(-20.0f, 0.0f); // Distance between characters
-				ySideOffset = Vector2(0.0f, 74.0f);
+            switch(ps)
+            {
+            case 5:
+                defaultOffset = Vector2(-35.0f, 24.0f);
+                xSideOffset = Vector2(-20.0f, 0.0f); // Distance between characters
+                ySideOffset = Vector2(0.0f, 74.0f);
                 centerOffset = Vector2(0.0f, 0.0f);
-				break;
+                break;
 
-			case 10:
-				defaultOffset = Vector2(-27.0f, 9.0f);
-				xSideOffset = Vector2(-16.0f, 0.0f); // Distance between characters
-				ySideOffset = Vector2(0.0f, 37.0f);
+            case 10:
+                defaultOffset = Vector2(-27.0f, 9.0f);
+                xSideOffset = Vector2(-16.0f, 0.0f); // Distance between characters
+                ySideOffset = Vector2(0.0f, 37.0f);
                 centerOffset = Vector2(-10.0f, 0.0f); // offset for above 10
-				break;
+                break;
 
-			case 15:
-				defaultOffset = Vector2(-17.0f, 11.0f);
-				xSideOffset = Vector2(-12.0f, 0.0f); // Distance between characters
-				ySideOffset = Vector2(0.0f, 24.58f);
+            case 15:
+                defaultOffset = Vector2(-17.0f, 11.0f);
+                xSideOffset = Vector2(-12.0f, 0.0f); // Distance between characters
+                ySideOffset = Vector2(0.0f, 24.58f);
                 centerOffset = Vector2(-7.0f, 0.0f); // offset for above 10
-				break;
+                break;
 
-			case 20:
-				defaultOffset = Vector2(-18.0f, 8.0f);
-				xSideOffset = Vector2(-10.0f, 0.0f); // Distance between characters
-				ySideOffset = Vector2(0.0f, 18.5f);
+            case 20:
+                defaultOffset = Vector2(-18.0f, 8.0f);
+                xSideOffset = Vector2(-10.0f, 0.0f); // Distance between characters
+                ySideOffset = Vector2(0.0f, 18.5f);
                 centerOffset = Vector2(-8.0f, 0.0f); // offset for above 10
-				break;
-			}
+                break;
+            }
 
             defaultOffset += context.GetOffset();
 
@@ -662,36 +662,36 @@ namespace Maple
             Vector2 ySideOffset;
             Vector2 centerOffset;
 
-			switch(ps)
-			{
-			case 5:
-				defaultOffset = Vector2(29.0f, -35.0f);
-				xSideOffset = Vector2(74.0f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -30.0f); // Distance between characters
+            switch(ps)
+            {
+            case 5:
+                defaultOffset = Vector2(29.0f, -35.0f);
+                xSideOffset = Vector2(74.0f, 0.0f); 
+                ySideOffset = Vector2(0.0f, -30.0f); // Distance between characters
                 centerOffset = Vector2(0.0f, 0.0f);
-				break;
+                break;
 
-			case 10:
-				defaultOffset = Vector2(12.0f, -30.0f);
-				xSideOffset = Vector2(37.0f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -20.0f); // Distance between characters
+            case 10:
+                defaultOffset = Vector2(12.0f, -30.0f);
+                xSideOffset = Vector2(37.0f, 0.0f); 
+                ySideOffset = Vector2(0.0f, -20.0f); // Distance between characters
                 centerOffset = Vector2(-6.0f, 0.0f); // offset for above 10
-				break;
+                break;
 
-			case 15:
-				defaultOffset = Vector2(10.0f, -14.0f);
-				xSideOffset = Vector2(24.6f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -14.0f); // Distance between characters
+            case 15:
+                defaultOffset = Vector2(10.0f, -14.0f);
+                xSideOffset = Vector2(24.6f, 0.0f); 
+                ySideOffset = Vector2(0.0f, -14.0f); // Distance between characters
                 centerOffset = Vector2(0.0f, 0.0f); // offset for above 10
-				break;
+                break;
 
-			case 20:
-				defaultOffset = Vector2(7.0f, -14.0f);
-				xSideOffset = Vector2(18.48f, 0.0f); 
-				ySideOffset = Vector2(0.0f, -10.0f); // Distance between characters
+            case 20:
+                defaultOffset = Vector2(7.0f, -14.0f);
+                xSideOffset = Vector2(18.48f, 0.0f); 
+                ySideOffset = Vector2(0.0f, -10.0f); // Distance between characters
                 centerOffset = Vector2(0.0f, 0.0f); // offset for above 10
-				break;
-			}
+                break;
+            }
 
             defaultOffset += context.GetOffset();
 

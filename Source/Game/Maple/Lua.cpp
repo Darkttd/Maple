@@ -151,8 +151,8 @@ namespace Maple
             lua_tinker::class_def<UIGameLogic>(L, "CursorMove", &UIGameLogic::CursorMove);
             lua_tinker::class_def<UIGameLogic>(L, "TryFillColor", &UIGameLogic::TryFillColor);
             lua_tinker::class_def<UIGameLogic>(L, "TryFillErased", &UIGameLogic::TryFillErased);
-			lua_tinker::class_def<UIGameLogic>(L, "GetPuzzleSize", &UIGameLogic::GetPuzzleSize);
-			lua_tinker::class_def<UIGameLogic>(L, "GetPatternNumber", &UIGameLogic::GetPatternNumber);
+            lua_tinker::class_def<UIGameLogic>(L, "GetPuzzleSize", &UIGameLogic::GetPuzzleSize);
+            lua_tinker::class_def<UIGameLogic>(L, "GetPatternNumber", &UIGameLogic::GetPatternNumber);
 
         lua_tinker::class_add<UIPuzzleSelect>(L, "UIPuzzleSelect");
             lua_tinker::class_inh<UIPuzzleSelect, UIPanel>(L);

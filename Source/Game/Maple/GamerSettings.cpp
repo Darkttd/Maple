@@ -223,12 +223,12 @@ namespace Maple
         switch (value)
         {
             case SchoolUniform:  return "SchoolUniform";
-            case Hanbok: 	     return "Hanbok";
-            case Gimono:		 return "Gimono";
-            case ChinaDress:	 return "ChinaDress";
-            case Nurse:		     return "Nurse";
-            case SwimSuits:	     return "SwimSuits";
-            case Maid:		     return "Maid";
+            case Hanbok:         return "Hanbok";
+            case Gimono:         return "Gimono";
+            case ChinaDress:     return "ChinaDress";
+            case Nurse:          return "Nurse";
+            case SwimSuits:      return "SwimSuits";
+            case Maid:           return "Maid";
             default:             return "SchoolUniform";
         }
     }
@@ -236,12 +236,12 @@ namespace Maple
     GamerSettings::StandingCharacterCloth GamerSettings::ConvertFromCharsToStandingCharacterCloth(const char* value)
     {
              if (String::EqualsCharsIgnoreCase(value, "SchoolUniform")) return SchoolUniform;
-        else if (String::EqualsCharsIgnoreCase(value, "Hanbok")) 	    return Hanbok;
-        else if (String::EqualsCharsIgnoreCase(value, "Gimono"))		return Gimono;
-        else if (String::EqualsCharsIgnoreCase(value, "ChinaDress"))	return ChinaDress;
-        else if (String::EqualsCharsIgnoreCase(value, "Nurse"))		    return Nurse;
-        else if (String::EqualsCharsIgnoreCase(value, "SwimSuits"))	    return SwimSuits;
-        else if (String::EqualsCharsIgnoreCase(value, "Maid"))		    return Maid;
+        else if (String::EqualsCharsIgnoreCase(value, "Hanbok"))        return Hanbok;
+        else if (String::EqualsCharsIgnoreCase(value, "Gimono"))        return Gimono;
+        else if (String::EqualsCharsIgnoreCase(value, "ChinaDress"))    return ChinaDress;
+        else if (String::EqualsCharsIgnoreCase(value, "Nurse"))         return Nurse;
+        else if (String::EqualsCharsIgnoreCase(value, "SwimSuits"))     return SwimSuits;
+        else if (String::EqualsCharsIgnoreCase(value, "Maid"))          return Maid;
         else                                                            return SchoolUniform;
     }
 }

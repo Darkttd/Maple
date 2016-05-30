@@ -99,8 +99,8 @@ namespace Maple
         //lua->Load("Asset/Script/GFX");
         //lua->Load("Asset/Script/SFX");
         lua->Load("Asset/Script/AnimationExtention");
-		lua->Load("Asset/Script/PuzzleData");
-		lua->Load("Asset/Script/PuzzleSelect");
+        lua->Load("Asset/Script/PuzzleData");
+        lua->Load("Asset/Script/PuzzleSelect");
         lua->Load("Asset/Script/dump");
 
         // <TODO> ReloadScript() has only code which related with scripting.

@@ -73,7 +73,7 @@ namespace Maple
             void TryFillColor();
             void TryFillErased();
 
-			int GetPuzzleSize() const;
+            int GetPuzzleSize() const;
             int GetPatternNumber() const;
 
             Bibim::Point2 GetAxisAlignedMousePosition(Bibim::Point2 startPoint, Bibim::Point2 currentPoint) const;
