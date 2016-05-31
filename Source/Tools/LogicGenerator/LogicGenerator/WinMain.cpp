@@ -104,15 +104,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             SendMessage(hCombo_FieldSize, CB_ADDSTRING, 0, (LPARAM)L"15x15");
             SendMessage(hCombo_FieldSize, CB_ADDSTRING, 0, (LPARAM)L"20x20");
 
-            hButton_Clear = CreateWindow(L"button", L"초기화", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            hButton_Clear = CreateWindow(L"button", L"Init", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
 	        	810, 50, 120, 50, hWnd, (HMENU)ID_CLEAR, g_hInst, NULL);
-            hButton_Load = CreateWindow(L"button", L"불러오기", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            hButton_Load = CreateWindow(L"button", L"Load", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
 	        	810, 350, 120, 50, hWnd, (HMENU)ID_LOAD, g_hInst, NULL);
-            hButton_Save = CreateWindow(L"button", L"저장", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            hButton_Save = CreateWindow(L"button", L"Save", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
 	        	810, 420, 120, 50, hWnd, (HMENU)ID_SAVE, g_hInst, NULL);
-            hButton_Check = CreateWindow(L"button", L"체크하기", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            hButton_Check = CreateWindow(L"button", L"Check", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                 810, 280, 120, 50, hWnd, (HMENU)ID_CHECK, g_hInst, NULL);
-            hButton_Export = CreateWindow(L"button", L"내보내기", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            hButton_Export = CreateWindow(L"button", L"Export", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                 810, 210, 120, 50, hWnd, (HMENU)ID_EXPORT, g_hInst, NULL);
         }
 
@@ -126,7 +126,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     case WM_CLOSE:
         if(isModified)
         {
-            int mbResult = MessageBox(hWnd, L"저장하시겠습니까?", L"모아모아큥♡", MB_YESNOCANCEL);
+            int mbResult = MessageBox(hWnd, L"Save?", L"Logic Generater", MB_YESNOCANCEL);
 
             switch(mbResult)
             {
@@ -306,7 +306,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                 case CBN_SELCHANGE:
                     if(isModified)
                     {
-                        int mbResult = MessageBox(hWnd, L"현재 내용이 초기화됩니다. 정말 바꾸겠습니까?", L"모아모아큥♡", MB_YESNO);
+                        int mbResult = MessageBox(hWnd, L"Work will be removed. really change size?", L"Logic Generater", MB_YESNO);
 
                         switch(mbResult)
                         {
@@ -328,7 +328,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             case ID_CLEAR:
                 if(isModified)
                 {
-                    int mbResult = MessageBox(hWnd, L"정말로 초기화하겠습니까?", L"모아모아큥♡", MB_YESNO);
+                    int mbResult = MessageBox(hWnd, L"Really initialize?", L"Logic Generater", MB_YESNO);
 
                     switch(mbResult)
                     {
@@ -356,7 +356,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                     }
                     else
                     {
-                        MessageBox(hWnd, L"답이 유일하지 않아 저장할 수 없습니다!", L"ㅠㅠ", MB_OK);
+                        MessageBox(hWnd, L"No unique answer! Failed to Save!", L"Logic Generater", MB_OK);
 
                         InvalidateRect(hWnd, nullptr, false);
                     }
@@ -375,7 +375,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                     }
                     else
                     {
-                        MessageBox(hWnd, L"답이 유일하지 않아 저장할 수 없습니다!", L"ㅠㅠ", MB_OK);
+                        MessageBox(hWnd, L"No unique answer! Failed to Export!!", L"Logic Generater", MB_OK);
 
                         InvalidateRect(hWnd, nullptr, false);
                     }
@@ -385,7 +385,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
             case ID_LOAD:
                 if(isModified)
                 {
-                    int mbResult = MessageBox(hWnd, L"현재 편집한 패턴을 저장하시겠습니까?", L"모아모아큥♡", MB_YESNOCANCEL);
+                    int mbResult = MessageBox(hWnd, L"Are you save current pattern?", L"Logic Generater", MB_YESNOCANCEL);
 
                     switch(mbResult)
                     {
@@ -417,7 +417,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			        memset(&OFN, 0, sizeof(OPENFILENAME));
 			        OFN.lStructSize = sizeof(OPENFILENAME);
 			        OFN.hwndOwner=hWnd;
-			        OFN.lpstrFilter=TEXT("모에모에네모로직 로직파일(*.moap)\0*.moap\0");
+			        OFN.lpstrFilter=TEXT("Moemoe SquareLogic Logic file(*.moap)\0*.moap\0");
 			        OFN.lpstrFile=lpstrFile;
 			        OFN.nMaxFile=MAX_PATH;
 
@@ -429,14 +429,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                         fin >> buffer;
                         if(wcscmp(buffer, L"MOAP") != 0)
                         {
-                            MessageBox(hWnd, L"모에모에 네모로직파일이 아니거나 손상되었습니다!", L"모아모아링☆", MB_OK);
+                            MessageBox(hWnd, L"It is not Logic file or crashed!", L"Logic Generater", MB_OK);
                             break;
                         }
 
                         fin >> index;
                         if(index < 0 || index > 3)
                         {
-                            MessageBox(hWnd, L"모에모에 네모로직파일이 아니거나 손상되었습니다!", L"모아모아큥♡", MB_OK);
+                            MessageBox(hWnd, L"It is not Logic file or crashed!", L"Logic Generater", MB_OK);
                             break;
                         }
 
@@ -462,9 +462,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
                     bool result = Check(arr, currentBoxSize);
 
                     if(result)
-                        MessageBox(hWnd, L"이 퍼즐은 답이 유일합니다", L"데헷", MB_OK);
+                        MessageBox(hWnd, L"This puzzle has unique answer", L"Logic Generater", MB_OK);
                     else
-                        MessageBox(hWnd, L"답이 유일하지 않은 퍼즐입니다ㅣ!", L"ㅠㅠ", MB_OK);
+                        MessageBox(hWnd, L"This puzzle have over one answer!", L"Logic Generater", MB_OK);
 
                     InvalidateRect(hWnd, nullptr, false);
                 }
@@ -528,7 +528,7 @@ bool Save(HWND hWnd)
     memset(&OFN, 0, sizeof(OPENFILENAME));
     OFN.lStructSize = sizeof(OPENFILENAME);
     OFN.hwndOwner=hWnd;
-    OFN.lpstrFilter=TEXT("모에모에네모로직 로직파일(*.moap)\0*.moap\0");
+    OFN.lpstrFilter=TEXT("Moemoe Squarelogic Logic File(*.moap)\0*.moap\0");
     OFN.lpstrFile=lpstrFile;
     OFN.nMaxFile=MAX_PATH;
 
@@ -557,7 +557,7 @@ bool Save(HWND hWnd)
 	    fout.open(str);
         if(!fout.is_open())
         {
-            MessageBox(hWnd, L"파일을 저장할 수 없습니다", L"모아모아링☆", MB_OK);
+            MessageBox(hWnd, L"Cannot write file.", L"Logic Generater", MB_OK);
             return false;
         }
 
@@ -594,7 +594,7 @@ bool Export(HWND hWnd)
     memset(&OFN, 0, sizeof(OPENFILENAME));
     OFN.lStructSize = sizeof(OPENFILENAME);
     OFN.hwndOwner=hWnd;
-    OFN.lpstrFilter=TEXT("모에모에네모로직 로직파일(*.lua)\0*.lua\0");
+    OFN.lpstrFilter=TEXT("Moemoe SquareLogic logic file(*.lua)\0*.lua\0");
     OFN.lpstrFile=lpstrFile;
     OFN.nMaxFile=MAX_PATH;
 
@@ -622,7 +622,7 @@ bool Export(HWND hWnd)
 	    fout.open(str);
         if(!fout.is_open())
         {
-            MessageBox(hWnd, L"파일을 저장할 수 없습니다", L"모아모아링☆", MB_OK);
+            MessageBox(hWnd, L"Cannot write file", L"Logic Generater", MB_OK);
             return false;
         }
 
