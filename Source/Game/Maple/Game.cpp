@@ -38,7 +38,6 @@ namespace Maple
         GamerSavedata* savedata = new GamerSavedata();
         GetModules()->GetRoot()->AttachChild(savedata);
 
-        // lua->SetArchive(mainMPQ);
         lua->SetGamerSettings(settings);
         lua->SetGamerSavedata(savedata);
 
@@ -83,8 +82,6 @@ namespace Maple
 
     void Game::ReloadScripts()
     {
-        //Bibim::Log::Warning("ReloadScripts Called");
-
         StandardGame::LuaBase* lua = GetLua();
         lua->Load("Asset/Script/Localization");
         lua->Load("Asset/Script/Localization-ko");

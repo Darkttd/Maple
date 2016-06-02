@@ -67,7 +67,6 @@ namespace Maple
 
     UIGameLogic::~UIGameLogic()
     {
-        //SetTimeline(nullptr);
         if (UIEventMap* em = GetEventMap())
         {
             em->ClearHandlers();
@@ -129,10 +128,7 @@ namespace Maple
                 break;
             }
 
-            //font->SetScale(30.0f);
             font->SetFaceURI("Asset/NanumGothic");
-            //font->SetShadowOffsetXY(500.0f,400.0f);
-            //font->set
         }
     }
 
@@ -341,12 +337,6 @@ namespace Maple
 
         if(!IsClearUIShowing())
         {
-            //if (numberLayer != nullptr)
-            //{
-            //    numberLayer->SetXY(30.0f, 30.0f);
-            //    DrawChild(context, numberLayer);
-            //}
-            
             DrawNumberCount(context);
             DrawClickedPattern(context);
         }
@@ -366,8 +356,6 @@ namespace Maple
             DrawChild(context, gameOverUiLayer);
 
         contextOffset = context.GetOffset();
-        //Matrix4 contextTransform = context.GetCurrentTransform();
-        //contextScale = Vector2(contextTransform.M00, contextTransform.M11);
 
         contextMatrixInv = context.GetCurrentTransformInv();
     }
@@ -396,8 +384,6 @@ namespace Maple
         {
             const float x = zeroPointOffset.X + contextOffset.X;
             const float y = zeroPointOffset.Y + contextOffset.Y;
-            //const float x = zeroPointOffset.X;
-            //const float y = zeroPointOffset.Y;
 
             ret = Point2((mousePosition.X - x) / (blockPixelSize + interBlockOffset),
                             (mousePosition.Y - y) / (blockPixelSize + interBlockOffset));
@@ -418,8 +404,6 @@ namespace Maple
             return RectF(
                 GetZeroPointOffset().X + contextOffset.X,
                 GetZeroPointOffset().Y + contextOffset.Y,
-                //GetZeroPointOffset().X,
-                //GetZeroPointOffset().Y,
                 (blockPixelSize + interBlockOffset) * puzzleSize,
                 (blockPixelSize + interBlockOffset) * puzzleSize);
         }
@@ -429,8 +413,6 @@ namespace Maple
 
     void UIGameLogic::CursorMove(int x, int y)
     {
-        //Bibim::Log::Warning(Bibim::String::CFormat("%d, %d", x, y));
-
         if(Math::Abs(x) + Math::Abs(y) != 1)
             return;
 
@@ -505,8 +487,6 @@ namespace Maple
 
     bool UIGameLogic::OnMouseMove(const Bibim::UIMouseEventArgs& args)
     {
-        //const Point2 targetMousePos = Point2(args.GetPositionX() / contextScale.X - contextOffset.X,
-            //args.GetPositionY() / contextScale.Y - contextOffset.Y);
         const Vector3 translatedMousePos = contextMatrixInv.Transform(Vector3(args.GetPositionX(), args.GetPositionY(), 0));
         const Point2 targetMousePos = Point2(translatedMousePos.X, translatedMousePos.Y);
 
@@ -525,8 +505,6 @@ namespace Maple
 
     bool UIGameLogic::OnMouseButtonDown(const Bibim::UIMouseButtonEventArgs& args)
     {
-        //const Point2 targetMousePos = Point2(args.GetPositionX() / contextScale.X - contextOffset.X,
-        //args.GetPositionY() / contextScale.Y - contextOffset.Y);
         const Vector3 translatedMousePos = contextMatrixInv.Transform(Vector3(args.GetPositionX(), args.GetPositionY(), 0));
         const Point2 targetMousePos = Point2(translatedMousePos.X, translatedMousePos.Y);
 
@@ -550,8 +528,6 @@ namespace Maple
 
     bool UIGameLogic::OnMouseButtonUp(const Bibim::UIMouseButtonEventArgs& args)
     {
-        //const Point2 targetMousePos = Point2(args.GetPositionX() / contextScale.X - contextOffset.X,
-        //args.GetPositionY() / contextScale.Y - contextOffset.Y);
         const Vector3 translatedMousePos = contextMatrixInv.Transform(Vector3(args.GetPositionX(), args.GetPositionY(), 0));
         const Point2 targetMousePos = Point2(translatedMousePos.X, translatedMousePos.Y);
 

@@ -112,8 +112,6 @@ namespace Maple
 
         lua_State* state = lua->GetState();
 
-        //lua_getglobal(state, "PUZZLES");
-
         lua_tinker::table puzzles = lua_tinker::get<lua_tinker::table>(state, "PUZZLES");
         const int numberOfPuzzles = puzzles.len();
         for(int i = 1; i <= numberOfPuzzles; i++)
@@ -124,9 +122,6 @@ namespace Maple
             xyInverter.index = i;
 
             lua_tinker::table puzzle = puzzles.get<lua_tinker::table>(i);
-
-            //info.SetCharacter(puzzle.get<const char*>("TargetCharacter"));
-            //xyInverter.SetCharacter(puzzle.get<const char*>("TargetCharacter"));
 
             lua_tinker::table pattern = puzzle.get<lua_tinker::table>("Pattern");
             int puzzleSize = pattern.len();

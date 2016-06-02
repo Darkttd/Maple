@@ -55,8 +55,6 @@ namespace Maple
             else
                 key = line;
 
-            //if (key.EqualsIgnoreCase("StandingCharacter"))
-            //    SetStandingCharacter(ConvertFromCharsToStandingCharacter(value.CStr()));
             if(key.EqualsIgnoreCase("MoaStandingCharacterCloth"))
                 SetMoaStandingCharacterCloth(ConvertFromCharsToStandingCharacterCloth(value.CStr()));
             else if(key.EqualsIgnoreCase("MapleStandingCharacterCloth"))
@@ -77,10 +75,6 @@ namespace Maple
     void GamerSettings::Save()
     {
         String body;
-
-        //body.Append("StandingCharacter=");
-        //body.Append(ConvertFromStandingCharacterToChars(GetStandingCharacter()));
-        //body.Append(String::NewLine);
 
         body.Append("MoaStandingCharacterCloth=");
         body.Append(ConvertFromStandingCharacterClothToChars(GetMoaStandingCharacterCloth()));

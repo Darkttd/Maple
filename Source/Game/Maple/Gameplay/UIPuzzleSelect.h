@@ -1,12 +1,8 @@
 #pragma once
 
 #include <Maple/FWD.h>
-//#include <Bibim/BitMask.h>
-//#include <Bibim/IUpdateable.h>
 #include <Bibim/UIImage.h>
 #include <Bibim/UIPanel.h>
-//#include <Bibim/Font.h>
-//#include <Bibim/FontLibrary.h>
 #include <Maple/PatternManager/PatternManager.h>
 
 namespace Maple

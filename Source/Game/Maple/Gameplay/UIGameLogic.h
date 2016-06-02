@@ -116,7 +116,6 @@ namespace Maple
 
             Bibim::Vector2 zeroPointOffset;
             Bibim::Vector2 contextOffset;
-            //Bibim::Vector2 contextScale;
             Bibim::Matrix4 contextMatrixInv;
             bool isGameAreaClicking;
             bool isPauseMenuShowing;

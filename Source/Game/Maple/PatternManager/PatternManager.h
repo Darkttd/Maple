@@ -48,7 +48,6 @@ namespace Maple
             int GetTotalPuzzelCount() const;
             int GetTotalPageCount() const;
 
-            //std::vector<PuzzlePattern> GetPuzzlePatternOnPage(int character, int page) const; // page starts 0
             PuzzleInformationCollection GetPuzzleInformationOnPage(int character, int page) const; // page starts 0
             const PuzzleInformation& GetPuzzleInformationOnNumber(int character, int index) const;
 
