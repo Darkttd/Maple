@@ -28,8 +28,10 @@ namespace Maple
         if (length <= 0)
             return;
 
+        // String(const char*, int, int) needs a NUL-terminated string; the extra
+        // element is value-initialized to '\0'.
         std::vector<char> bodyBytes;
-        bodyBytes.resize(length);
+        bodyBytes.resize(length + 1);
         stream->Read(&bodyBytes[0], length);
         stream->Close();
 
