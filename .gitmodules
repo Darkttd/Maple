@@ -1,0 +1,3 @@
+[submodule "Source/bibim"]
+	path = Source/bibim
+	url = https://github.com/Darkttd/bibim.git
