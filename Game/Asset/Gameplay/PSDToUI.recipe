@@ -27,9 +27,9 @@
         },
         "BitmapSheetSize" : "1024, 1024",
         "BitmapSheetClusterSize" : "16, 16",
-        "TextureOutput"          : "gen\\$(AssetName)_TEXTURE{0}",
-        "ImageOutput"            : "gen\\$(AssetName)_IMG{0}",
-        "MaskOutput"             : "gen\\$(AssetName)_MASK{0}"
+        "TextureOutput"          : "gen/$(AssetName)_TEXTURE{0}",
+        "ImageOutput"            : "gen/$(AssetName)_IMG{0}",
+        "MaskOutput"             : "gen/$(AssetName)_MASK{0}"
     },
     "Author" : "",
     "Comment" : "",
