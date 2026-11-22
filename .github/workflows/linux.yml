@@ -1,0 +1,68 @@
+name: Linux
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-smoke:
+    name: Linux ${{ matrix.name }}
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Debug
+            build_type: Debug
+          - name: Release
+            build_type: Release
+          - name: ASan
+            build_type: Debug
+            sanitize_flags: -fsanitize=address -fno-omit-frame-pointer
+          # -fno-sanitize-recover: the first finding stops the game.
+          - name: UBSan
+            build_type: Debug
+            sanitize_flags: -fsanitize=undefined -fno-sanitize-recover=all -fno-omit-frame-pointer
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      # libegl-mesa0: Mesa EGL with the llvmpipe software renderer.
+      - name: Install build tools and libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ninja-build libgles-dev libegl-dev libsdl3-dev libegl-mesa0 xvfb xdotool imagemagick
+
+      - name: Configure
+        run: >
+          cmake -S . -B build-linux -G Ninja
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          "-DCMAKE_C_FLAGS=${{ matrix.sanitize_flags }}"
+          "-DCMAKE_CXX_FLAGS=${{ matrix.sanitize_flags }}"
+          "-DCMAKE_EXE_LINKER_FLAGS=${{ matrix.sanitize_flags }}"
+
+      - name: Build
+        run: cmake --build build-linux
+
+      - name: Smoke run
+        env:
+          ASAN_OPTIONS: detect_leaks=0:halt_on_error=1
+        run: ci/smoke.sh build-linux/Maple smoke
+
+      - name: Upload screenshots and logs
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: smoke-${{ matrix.name }}
+          path: smoke/
+          retention-days: 14

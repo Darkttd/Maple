@@ -1,0 +1,43 @@
+# Build only: running the game would need its Direct3D 9 renderer under Wine.
+name: MinGW
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: MinGW ${{ matrix.build_type }}
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      # g++-mingw-w64-x86-64 includes the d3d9/d3dx9 headers and import libraries.
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ninja-build g++-mingw-w64-x86-64
+
+      - name: Configure
+        run: >
+          cmake -S . -B build-mingw -G Ninja
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          -DCMAKE_TOOLCHAIN_FILE=Source/bibim/cmake/mingw-w64-x86_64.cmake
+
+      - name: Build
+        run: cmake --build build-mingw
