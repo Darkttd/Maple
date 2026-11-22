@@ -41,7 +41,9 @@ export DISPLAY=:$(cat "$out/display")
 
 (
     cd "$deploy"
-    export SDL_VIDEO_DRIVER=x11 BIBIM_AUDIO_DRIVER=null XDG_DATA_HOME="$out/data"
+    # EGL instead of GLX: SDL 3.4.2 on the CI runner found no matching GLX visual
+    # under Xvfb, while EGL works with the same Mesa.
+    export SDL_VIDEO_DRIVER=x11 SDL_VIDEO_FORCE_EGL=1 BIBIM_AUDIO_DRIVER=null XDG_DATA_HOME="$out/data"
     exec "$game"
 ) >"$out/game.log" 2>&1 &
 game_pid=$!

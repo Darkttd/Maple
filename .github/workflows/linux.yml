@@ -37,12 +37,11 @@ jobs:
         with:
           submodules: recursive
 
-      # libegl-mesa0 / libglx-mesa0 / libgl1-mesa-dri: Mesa EGL, GLX (SDL makes X11 GL windows
-      # with GLX) and the llvmpipe software renderer, which Xvfb also needs for GLX.
+      # libegl-mesa0: Mesa EGL with the llvmpipe software renderer.
       - name: Install build tools and libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends ninja-build libgles-dev libegl-dev libsdl3-dev libegl-mesa0 libglx-mesa0 libgl1-mesa-dri xvfb xdotool imagemagick
+          sudo apt-get install -y --no-install-recommends ninja-build libgles-dev libegl-dev libsdl3-dev libegl-mesa0 xvfb xdotool imagemagick
 
       - name: Configure
         run: >
@@ -54,22 +53,6 @@ jobs:
 
       - name: Build
         run: cmake --build build-linux
-
-      - name: GLX diagnostics (temporary)
-        continue-on-error: true
-        run: |
-          sudo apt-get install -y --no-install-recommends mesa-utils x11-utils
-          Xvfb :99 -screen 0 1024x768x24 -nolisten tcp &
-          sleep 2
-          DISPLAY=:99 xdpyinfo | grep -i -A3 'number of extensions' || true
-          DISPLAY=:99 xdpyinfo -queryExtensions | grep -i glx || true
-          DISPLAY=:99 LIBGL_DEBUG=verbose glxinfo -B || true
-          DISPLAY=:99 glxinfo | sed -n '/GLX Visuals/,/^$/p' | head -15 || true
-          DISPLAY=:99 xdpyinfo | grep -E 'depth of root|depths|visual id|class|depth:' | head -20 || true
-          dpkg -l | grep -E 'libsdl3|xvfb|xserver-common|libgl1-mesa-dri|libgallium' || true
-          ls /usr/lib/x86_64-linux-gnu/dri/ | head || true
-          ls /usr/share/glvnd/egl_vendor.d/ /usr/lib/x86_64-linux-gnu/libGLX_* || true
-          kill %1
 
       - name: Smoke run
         env:
