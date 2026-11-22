@@ -55,6 +55,20 @@ jobs:
       - name: Build
         run: cmake --build build-linux
 
+      - name: GLX diagnostics (temporary)
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y --no-install-recommends mesa-utils x11-utils
+          Xvfb :99 -screen 0 1024x768x24 -nolisten tcp &
+          sleep 2
+          DISPLAY=:99 xdpyinfo | grep -i -A3 'number of extensions' || true
+          DISPLAY=:99 xdpyinfo -queryExtensions | grep -i glx || true
+          DISPLAY=:99 LIBGL_DEBUG=verbose glxinfo -B || true
+          DISPLAY=:99 glxinfo | grep -i -E 'es2_profile|visual' | head -5 || true
+          ls /usr/lib/x86_64-linux-gnu/dri/ | head || true
+          ls /usr/share/glvnd/egl_vendor.d/ /usr/lib/x86_64-linux-gnu/libGLX_* || true
+          kill %1
+
       - name: Smoke run
         env:
           ASAN_OPTIONS: detect_leaks=0:halt_on_error=1
