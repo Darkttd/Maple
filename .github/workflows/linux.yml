@@ -37,12 +37,12 @@ jobs:
         with:
           submodules: recursive
 
-      # libegl-mesa0 / libglx-mesa0: Mesa EGL and GLX (SDL makes X11 GL windows with GLX)
-      # with the llvmpipe software renderer.
+      # libegl-mesa0 / libglx-mesa0 / libgl1-mesa-dri: Mesa EGL, GLX (SDL makes X11 GL windows
+      # with GLX) and the llvmpipe software renderer, which Xvfb also needs for GLX.
       - name: Install build tools and libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends ninja-build libgles-dev libegl-dev libsdl3-dev libegl-mesa0 libglx-mesa0 xvfb xdotool imagemagick
+          sudo apt-get install -y --no-install-recommends ninja-build libgles-dev libegl-dev libsdl3-dev libegl-mesa0 libglx-mesa0 libgl1-mesa-dri xvfb xdotool imagemagick
 
       - name: Configure
         run: >
