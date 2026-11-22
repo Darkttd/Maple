@@ -64,7 +64,9 @@ jobs:
           DISPLAY=:99 xdpyinfo | grep -i -A3 'number of extensions' || true
           DISPLAY=:99 xdpyinfo -queryExtensions | grep -i glx || true
           DISPLAY=:99 LIBGL_DEBUG=verbose glxinfo -B || true
-          DISPLAY=:99 glxinfo | grep -i -E 'es2_profile|visual' | head -5 || true
+          DISPLAY=:99 glxinfo | sed -n '/GLX Visuals/,/^$/p' | head -15 || true
+          DISPLAY=:99 xdpyinfo | grep -E 'depth of root|depths|visual id|class|depth:' | head -20 || true
+          dpkg -l | grep -E 'libsdl3|xvfb|xserver-common|libgl1-mesa-dri|libgallium' || true
           ls /usr/lib/x86_64-linux-gnu/dri/ | head || true
           ls /usr/share/glvnd/egl_vendor.d/ /usr/lib/x86_64-linux-gnu/libGLX_* || true
           kill %1
